@@ -354,14 +354,11 @@
 
 <!-- ================= MOBILE ================= -->
 
-<div class="mobile-screen active" id="mobile-info">
+<div class="mobile-screen" id="mobile-info">
 	<img class="mobile-hero" src="assets/J2556153746276566803154102331228.jpeg" alt="Will Jorgensen">
 	<div class="mobile-h1">
 		<div class="name-row">
 			<a href="#top-mobile" id="top-mobile">Will Jorgensen</a>
-			<span class="lang-toggle" role="group" aria-label="Language">
-				<button type="button" class="lang-btn active" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" class="lang-btn" data-lang="de">DE</button>
-			</span>
 		</div>
 		<span class="gap gap-2"></span>
 		<strong class="i18n" data-de="PROFIL">PROFILE</strong><br>
@@ -374,7 +371,7 @@
 	</div>
 </div>
 
-<div class="mobile-screen" id="mobile-projects">
+<div class="mobile-screen active" id="mobile-projects">
 	<div id="mobile-projects-inner"></div>
 </div>
 
@@ -385,11 +382,13 @@
 <nav class="mobile-nav">
 	<div class="mobile-nav-row">
 		<div>
-			<a href="#" data-screen="mobile-info" class="mobile-tab-link active i18n" data-de="INFO">INFO</a>
-			<a href="#" data-screen="mobile-projects" class="mobile-tab-link i18n" data-de="PROJEKTE">PROJECTS</a>
+			<a href="#" data-screen="mobile-info" class="mobile-tab-link i18n" data-de="INFO">INFO</a>
+			<a href="#" data-screen="mobile-projects" class="mobile-tab-link active i18n" data-de="PROJEKTE">PROJECTS</a>
 			<a href="#" data-screen="mobile-cv" class="mobile-tab-link i18n" data-de="LEBENSLAUF">CV</a>
 		</div>
-		<a href="#" class="contact-link i18n" data-de="KONTAKT">CONTACT</a>
+		<span class="lang-toggle" role="group" aria-label="Language">
+			<button type="button" class="lang-btn active" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" class="lang-btn" data-lang="de">DE</button>
+		</span>
 	</div>
 </nav>
 
