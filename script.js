@@ -43,9 +43,16 @@ document.addEventListener('DOMContentLoaded', function () {
 		try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
 	}
 
-	var savedLang = 'en';
-	try { savedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) {}
-	applyLang(savedLang);
+	function detectLang() {
+		var saved = null;
+		try { saved = localStorage.getItem(LANG_KEY); } catch (e) {}
+		if (saved) return saved;
+		var browserLangs = navigator.languages || [navigator.language || ''];
+		var isGerman = browserLangs.some(function (l) { return /^de\b/i.test(l); });
+		return isGerman ? 'de' : 'en';
+	}
+
+	applyLang(detectLang());
 
 	document.querySelectorAll('.lang-btn').forEach(function (btn) {
 		btn.addEventListener('click', function () {
