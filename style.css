@@ -89,6 +89,55 @@ img {
 .gap-2 { height: 2.7em; }
 .gap-3 { height: 4em; }
 
+/* -------------------- language toggle -------------------- */
+
+.lang-toggle {
+	position: fixed;
+	top: 0.85rem;
+	right: 0.85rem;
+	z-index: 50;
+	display: flex;
+	align-items: center;
+	gap: 0.35rem;
+	font-size: 0.75rem;
+	letter-spacing: 0.02em;
+	background: #ffffff;
+	padding: 0.3rem 0.55rem;
+	border: 0.1rem solid var(--ink);
+	filter: drop-shadow(0.15rem 0.15rem 0 var(--ink));
+}
+
+.lang-toggle span {
+	color: var(--ink-5);
+}
+
+.lang-btn {
+	appearance: none;
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	color: var(--ink-4);
+	cursor: pointer;
+}
+
+.lang-btn.active {
+	color: var(--ink);
+	font-weight: 600;
+}
+
+.lang-btn:hover {
+	color: var(--ink-2);
+}
+
+@media (max-width: 900px) {
+	.lang-toggle {
+		top: 0.6rem;
+		right: 0.6rem;
+	}
+}
+
 /* -------------------- desktop scaffold -------------------- */
 
 .lines {

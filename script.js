@@ -24,6 +24,35 @@ document.addEventListener('DOMContentLoaded', function () {
 		cvTarget.innerHTML = cvSource.innerHTML;
 	}
 
+	// EN/DE language toggle. Each translatable element carries a .i18n
+	// class and a data-de attribute; its original (English) markup is
+	// captured into data-en the first time it's swapped.
+	var LANG_KEY = 'site-lang';
+
+	function applyLang(lang) {
+		document.querySelectorAll('.i18n').forEach(function (el) {
+			if (el.dataset.en === undefined) {
+				el.dataset.en = el.innerHTML;
+			}
+			el.innerHTML = lang === 'de' ? el.dataset.de : el.dataset.en;
+		});
+		document.documentElement.lang = lang;
+		document.querySelectorAll('.lang-btn').forEach(function (btn) {
+			btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+		});
+		try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+	}
+
+	var savedLang = 'en';
+	try { savedLang = localStorage.getItem(LANG_KEY) || 'en'; } catch (e) {}
+	applyLang(savedLang);
+
+	document.querySelectorAll('.lang-btn').forEach(function (btn) {
+		btn.addEventListener('click', function () {
+			applyLang(btn.getAttribute('data-lang'));
+		});
+	});
+
 	// Mobile tab switching
 	var tabLinks = document.querySelectorAll('.mobile-tab-link');
 	var screens = document.querySelectorAll('.mobile-screen');
