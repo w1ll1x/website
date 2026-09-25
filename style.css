@@ -91,20 +91,19 @@ img {
 
 /* -------------------- language toggle -------------------- */
 
-.lang-toggle {
-	position: fixed;
-	top: 0.85rem;
-	right: 0.85rem;
-	z-index: 50;
+.name-row {
 	display: flex;
-	align-items: center;
-	gap: 0.35rem;
-	font-size: 0.75rem;
-	letter-spacing: 0.02em;
-	background: #ffffff;
-	padding: 0.3rem 0.55rem;
-	border: 0.1rem solid var(--ink);
-	filter: drop-shadow(0.15rem 0.15rem 0 var(--ink));
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
+.lang-toggle {
+	display: flex;
+	align-items: baseline;
+	gap: 0.3rem;
+	white-space: nowrap;
+	font-size: 12px;
 }
 
 .lang-toggle span {
@@ -118,24 +117,20 @@ img {
 	padding: 0;
 	margin: 0;
 	font: inherit;
-	color: var(--ink-4);
+	color: var(--ink);
+	text-decoration: underline;
+	text-decoration-color: var(--ink-5);
 	cursor: pointer;
 }
 
-.lang-btn.active {
-	color: var(--ink);
-	font-weight: 600;
-}
-
 .lang-btn:hover {
-	color: var(--ink-2);
+	color: var(--ink-3);
 }
 
-@media (max-width: 900px) {
-	.lang-toggle {
-		top: 0.6rem;
-		right: 0.6rem;
-	}
+.lang-btn.active {
+	color: var(--ink-3);
+	text-decoration: none;
+	cursor: default;
 }
 
 /* -------------------- desktop scaffold -------------------- */

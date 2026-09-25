@@ -9,17 +9,17 @@
 </head>
 <body>
 
-<!-- ================= LANGUAGE TOGGLE ================= -->
-<div class="lang-toggle" id="lang-toggle" role="group" aria-label="Language">
-	<button type="button" class="lang-btn active" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" class="lang-btn" data-lang="de">DE</button>
-</div>
-
 <!-- fixed vertical divider lines (desktop) -->
 <div class="lines desktop-only" aria-hidden="true"></div>
 
 <!-- ================= LEFT PANEL — PROFILE (desktop) ================= -->
 <aside class="panel panel-left desktop-only">
-	<a href="#top" class="site-name">Will Jorgensen</a>
+	<div class="name-row">
+		<a href="#top" class="site-name">Will Jorgensen</a>
+		<span class="lang-toggle" role="group" aria-label="Language">
+			<button type="button" class="lang-btn active" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" class="lang-btn" data-lang="de">DE</button>
+		</span>
+	</div>
 	<span class="gap gap-3"></span>
 	<hr>
 	<span class="i18n" data-de="PROFIL">PROFILE</span>
@@ -348,7 +348,12 @@
 <div class="mobile-screen active" id="mobile-info">
 	<img class="mobile-hero" src="assets/J2556153746276566803154102331228.jpeg" alt="Will Jorgensen">
 	<div class="mobile-h1">
-		<a href="#top-mobile" id="top-mobile">Will Jorgensen</a>
+		<div class="name-row">
+			<a href="#top-mobile" id="top-mobile">Will Jorgensen</a>
+			<span class="lang-toggle" role="group" aria-label="Language">
+				<button type="button" class="lang-btn active" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" class="lang-btn" data-lang="de">DE</button>
+			</span>
+		</div>
 		<span class="gap gap-2"></span>
 		<strong class="i18n" data-de="PROFIL">PROFILE</strong><br>
 		<a href="mailto:williamjorgensen24@gmail.com">williamjorgensen24@gmail.com</a><br>
