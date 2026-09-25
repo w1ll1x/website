@@ -78,6 +78,26 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
+	// Photo lightbox: click any project/profile photo to view it full size
+	var lightbox = document.getElementById('lightbox');
+	var lightboxImg = document.getElementById('lightbox-img');
+
+	document.addEventListener('click', function (e) {
+		var img = e.target.closest('.center img, .mobile-screen img');
+		if (!img) return;
+		lightboxImg.src = img.currentSrc || img.src;
+		lightboxImg.alt = img.alt;
+		lightbox.classList.add('open');
+	});
+
+	lightbox.addEventListener('click', function () {
+		lightbox.classList.remove('open');
+	});
+
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape') lightbox.classList.remove('open');
+	});
+
 	// Contact modal
 	var modal = document.getElementById('contact-modal');
 	var contactLinks = document.querySelectorAll('.contact-link');
