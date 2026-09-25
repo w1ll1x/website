@@ -515,6 +515,65 @@ img {
 	object-fit: contain;
 }
 
+.lightbox.gallery img {
+	cursor: pointer;
+}
+
+.lightbox-nav {
+	appearance: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: 0;
+	padding: 1rem;
+	font: inherit;
+	font-size: 22px;
+	color: var(--ink);
+	cursor: pointer;
+	display: none;
+}
+
+.lightbox-prev { left: 0; }
+.lightbox-next { right: 0; }
+
+.lightbox-nav:hover {
+	color: var(--ink-3);
+}
+
+.lightbox-count {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: calc(0.6rem + env(safe-area-inset-bottom));
+	text-align: center;
+	color: var(--ink-4);
+	font-variant-numeric: tabular-nums;
+	display: none;
+}
+
+.lightbox.gallery .lightbox-nav,
+.lightbox.gallery .lightbox-count {
+	display: block;
+}
+
+.lightbox.gallery {
+	padding: 2.5rem 3rem;
+}
+
+@media (max-width: 900px) {
+	.lightbox.gallery {
+		padding: 2.5rem 0.85rem;
+	}
+
+	/* on phones: swipe or tap the photo; arrows sit at the bottom */
+	.lightbox-nav {
+		top: auto;
+		bottom: env(safe-area-inset-bottom);
+		transform: none;
+	}
+}
+
 /* -------------------- contact modal -------------------- */
 
 .modal-overlay {

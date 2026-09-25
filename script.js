@@ -78,24 +78,68 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	});
 
-	// Photo lightbox: click any project/profile photo to view it full size
+	// Photo lightbox: click any project/profile photo to view it full size.
+	// Photos inside a gallery can be stepped through with the arrows, arrow
+	// keys, a swipe, or by clicking the photo itself.
 	var lightbox = document.getElementById('lightbox');
 	var lightboxImg = document.getElementById('lightbox-img');
+	var lightboxCount = document.getElementById('lightbox-count');
+	var galleryImgs = [];
+	var galleryIndex = 0;
+
+	function showLightboxImg(i) {
+		galleryIndex = (i + galleryImgs.length) % galleryImgs.length;
+		var img = galleryImgs[galleryIndex];
+		lightboxImg.src = img.currentSrc || img.src;
+		lightboxImg.alt = img.alt;
+		lightboxCount.textContent = (galleryIndex + 1) + ' / ' + galleryImgs.length;
+	}
+
+	function closeLightbox() {
+		lightbox.classList.remove('open');
+	}
 
 	document.addEventListener('click', function (e) {
 		var img = e.target.closest('.center img, .mobile-screen img');
 		if (!img) return;
-		lightboxImg.src = img.currentSrc || img.src;
-		lightboxImg.alt = img.alt;
+		var gallery = img.closest('[class^="gallery-"]');
+		galleryImgs = gallery ? Array.prototype.slice.call(gallery.querySelectorAll('img')) : [img];
+		lightbox.classList.toggle('gallery', galleryImgs.length > 1);
+		showLightboxImg(galleryImgs.indexOf(img));
 		lightbox.classList.add('open');
 	});
 
-	lightbox.addEventListener('click', function () {
-		lightbox.classList.remove('open');
+	lightbox.addEventListener('click', function (e) {
+		var isGallery = galleryImgs.length > 1;
+		if (e.target.closest('.lightbox-prev')) {
+			showLightboxImg(galleryIndex - 1);
+		} else if (e.target.closest('.lightbox-next') || (isGallery && e.target === lightboxImg)) {
+			showLightboxImg(galleryIndex + 1);
+		} else {
+			closeLightbox();
+		}
 	});
 
 	document.addEventListener('keydown', function (e) {
-		if (e.key === 'Escape') lightbox.classList.remove('open');
+		if (!lightbox.classList.contains('open')) return;
+		if (e.key === 'Escape') closeLightbox();
+		if (galleryImgs.length < 2) return;
+		if (e.key === 'ArrowLeft') showLightboxImg(galleryIndex - 1);
+		if (e.key === 'ArrowRight') showLightboxImg(galleryIndex + 1);
+	});
+
+	var touchStartX = null;
+	lightbox.addEventListener('touchstart', function (e) {
+		touchStartX = e.touches[0].clientX;
+	}, { passive: true });
+	lightbox.addEventListener('touchend', function (e) {
+		if (touchStartX === null || galleryImgs.length < 2) return;
+		var dx = e.changedTouches[0].clientX - touchStartX;
+		touchStartX = null;
+		if (Math.abs(dx) > 40) {
+			showLightboxImg(galleryIndex + (dx < 0 ? 1 : -1));
+			e.preventDefault(); // suppress the follow-up click
+		}
 	});
 
 	// Contact modal
