@@ -414,6 +414,26 @@ img {
 	overflow-wrap: anywhere;
 }
 
+/* stack project titles above their descriptions */
+#mobile-projects-inner .row {
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+#mobile-projects-inner .row > [class*="col-"] {
+	flex: none;
+	width: 100%;
+}
+
+#mobile-projects-inner .label-col {
+	white-space: normal;
+	font-weight: 600;
+}
+
+#mobile-projects-inner .col-2 img {
+	width: 4rem !important;
+}
+
 .mobile-h1 > strong + br,
 .mobile-h1 .mobile-tab-link + br {
 	display: none;
